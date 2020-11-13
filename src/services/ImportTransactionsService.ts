@@ -31,7 +31,6 @@ class ImportTransactionsService {
         from_line: 2,
         trim: true,
         skip_empty_lines: true,
-        skip_lines_with_error: true,
       }),
     );
 
@@ -55,7 +54,7 @@ class ImportTransactionsService {
     const existingCategoriesTitle = existingCategories.map(item => item.title);
     const newCategories = categories
       .filter(category => !existingCategoriesTitle.includes(category))
-      .filter((val, key, self) => self.indexOf(val) !== key);
+      .filter((val, key, self) => self.indexOf(val) === key);
 
     const addCategories = categoryRepository.create(
       newCategories.map(title => ({ title })),
