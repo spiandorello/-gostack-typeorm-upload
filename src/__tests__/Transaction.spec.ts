@@ -13,11 +13,11 @@ let connection: Connection;
 describe('Transaction', () => {
   beforeAll(async () => {
     connection = await createConnection('test-connection');
-    
+
     await connection.query('DROP TABLE IF EXISTS transactions');
     await connection.query('DROP TABLE IF EXISTS categories');
     await connection.query('DROP TABLE IF EXISTS migrations');
-    
+
     await connection.runMigrations();
   });
 
@@ -112,7 +112,7 @@ describe('Transaction', () => {
     const transaction = await transactionsRepository.findOne({
       where: {
         title: 'March Salary',
-        category_id: category?.id,
+        category: category?.id,
       },
     });
 
@@ -145,7 +145,7 @@ describe('Transaction', () => {
     const transaction = await transactionsRepository.findOne({
       where: {
         title: 'March Salary',
-        category_id: insertedCategoryId,
+        category: insertedCategoryId,
       },
     });
 

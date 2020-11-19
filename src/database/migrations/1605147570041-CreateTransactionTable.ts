@@ -49,7 +49,7 @@ export default class CreateTransactionTable1605147570041
             default: 'uuid_generate_v4()',
           },
           {
-            name: 'category_id',
+            name: 'category',
             type: 'uuid',
           },
           {

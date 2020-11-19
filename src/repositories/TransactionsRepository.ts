@@ -12,7 +12,7 @@ interface Balance {
 class TransactionsRepository extends Repository<Transaction> {
   public async fetchAll(): Promise<Array<Transaction>> {
     return this.createQueryBuilder('tr')
-      .innerJoinAndSelect('tr.category_id', 'ct')
+      .innerJoinAndSelect('tr.category', 'ct')
       .getMany();
   }
 
